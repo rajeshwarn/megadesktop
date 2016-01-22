@@ -84,7 +84,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <TextBlock TextDecorations="Underline" VerticalAlignment="Center">
-                                <ContentPresenter />
+                                <!--<ContentPresenter />-->
                             </TextBlock>
                         </ControlTemplate>
                     </Button.Template>
@@ -121,7 +121,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <TextBlock TextDecorations="Underline" VerticalAlignment="Center">
-                                <ContentPresenter />
+                                <!--<ContentPresenter />-->
                             </TextBlock>
                         </ControlTemplate>
                     </Button.Template>
@@ -181,6 +181,7 @@
             <Button Height="50" Name="buttonFeedback" Width="50" HorizontalAlignment="Right" Click="buttonFeedback_Click" IsEnabled="true" ToolTip="Send feedback" Margin="0,0,10,0" >
                 <Image Source="pack://application:,,,/MegaDesktop;component/resources/bug.png" Height="20"/>
             </Button>
+            <Button Height="50" Content="Show Online" x:Name="openInWeb" Width="82" HorizontalAlignment="Left" IsEnabled="True" ToolTip="Refresh" Margin="10,25,0,25" Click="openInWeb_Click" />
         </DockPanel>
         <DockPanel  HorizontalAlignment="Stretch" Margin="0,100,0,130" Name="dockPanel2" VerticalAlignment="Stretch">
             <ListBox Name="listBoxNodes" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemTemplate="{StaticResource NodeViewTemplate}" MouseDoubleClick="listBoxNodes_MouseDoubleClick" SelectionChanged="listBoxNodes_SelectionChanged" />
@@ -192,7 +193,7 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <TextBlock TextDecorations="Underline" VerticalAlignment="Center">
-                                <ContentPresenter />
+                                <!--<ContentPresenter />-->
                         </TextBlock>
                     </ControlTemplate>
                 </Button.Template>

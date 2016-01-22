@@ -239,6 +239,23 @@ namespace MegaApi
             transport.EnqueueRequest(req);
             return req;
         }
+        public string GetDownloadLink(MegaNode node, string filename, Action<DownloadHandle> OnHandleReady, Action<int> OnError)
+        {
+            var req = new MRequestGetDownloadUrl<MResponseGetDownloadUrl>(User, node.Id);
+            DownloadHandle handle = null;
+            string url=null;
+            req.Success += (s, a) =>
+            {
+                url = a.Url;
+                handle = MegaDownloader.GetHandle(filename, a.FileSize, a.Url, node);
+                if (OnHandleReady != null) { Util.StartThread(() => OnHandleReady(handle), "transfer_handle_ready_handler"); }
+                downloader.StartTransfer(handle);
+            };
+            req.Error += (s, e) => { if (OnError != null) { OnError(e.Error); } };
+            transport.EnqueueRequest(req);
+            return url;
+        }
+
         public void DownloadFileSync(MegaNode node, string filename)
         {
             int? error = null;
