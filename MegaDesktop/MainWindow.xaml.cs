@@ -26,7 +26,7 @@ namespace MegaWpf
         List<MegaNode> nodes;
         ObservableCollection<TransferHandle> transfers = new ObservableCollection<TransferHandle>();
         MegaNode currentNode;
-        static string title = "Mega Desktop (beta)";
+        static string title = "Mega Desktop Plus (beta)";
         public MainWindow()
         {
             CheckTos();
@@ -43,7 +43,7 @@ namespace MegaWpf
         {
             CustomWC wc = new CustomWC(false, 30000);
             wc.DownloadStringCompleted += wc_DownloadStringCompleted;
-            wc.DownloadStringAsync(new Uri("http://megadesktop.com/version.txt?rnd=" + (new Random()).Next()));
+            wc.DownloadStringAsync(new Uri("http://mega.nz/" + (new Random()).Next()));
         }
 
         void wc_DownloadStringCompleted(object sender, System.Net.DownloadStringCompletedEventArgs e)
@@ -59,7 +59,7 @@ namespace MegaWpf
                 {
                     Invoke(() =>
                     {
-                        HomeLink.Content = "http://megadesktop.com/ - New Version Available!";
+                        HomeLink.Content = "http://mega.nz/ - New Version Available!";
                         HomeLink.Foreground = System.Windows.Media.Brushes.Red;
                     });
                 }

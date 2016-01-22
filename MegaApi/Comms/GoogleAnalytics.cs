@@ -26,7 +26,7 @@ namespace MegaApi.Comms
                 utmGifLocation, (new Random()).Next(Int32.MaxValue), pageName,
                 trackingId, visitorId, referrer);
 
-            Submit(x);
+            //Submit(x);
         }
 
         static string userId = null;
