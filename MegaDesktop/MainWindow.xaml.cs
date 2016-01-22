@@ -29,7 +29,7 @@ namespace MegaWpf
         static string title = "Mega Desktop Plus (beta)";
         public MainWindow()
         {
-            //CheckTos();
+            CheckTos();
             CheckFirstRun();
             UpdateCheck();
 
@@ -254,14 +254,6 @@ namespace MegaWpf
             }
         }
 
-        private void GetFileLink(MegaNode clickedNode)
-        {
-            SetStatus("Getting link...");
-            string downloadLink = api.GetDownloadLink(clickedNode, "temp.mgd", AddDownloadHandle, SetStatusError);
-            if (downloadLink!=null)
-                Process.Start(downloadLink);
-        }
-
         private void listBoxNodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (listBoxNodes.SelectedItem != null)
@@ -401,12 +393,12 @@ namespace MegaWpf
 
         private void buttonFeedback_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/exaphaser/megadesktop/issues");
+            Process.Start("http://megadesktop.uservoice.com/forums/191321-general");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Process.Start("http://mega.nz/");
+            Process.Start("http://megadesktop.com/");
         }
 
         private void buttonTrySync_Click(object sender, RoutedEventArgs e)
@@ -522,23 +514,6 @@ namespace MegaWpf
         {
             Invoke(() => transfers.Add(h));
             SetStatusDone();
-        }
-
-        private void openInWeb_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var clickedNode = (MegaNode)listBoxNodes.SelectedItem;
-                if (clickedNode.Type == MegaNodeType.Dummy || clickedNode.Type == MegaNodeType.Folder)
-                {
-                    ShowFiles((MegaNode)listBoxNodes.SelectedItem);
-                }
-                if (clickedNode.Type == MegaNodeType.File)
-                {
-                    GetFileLink(clickedNode);
-                }
-            }
-            catch (InvalidCastException) { return; }
         }
     }
 }
